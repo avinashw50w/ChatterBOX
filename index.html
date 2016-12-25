@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ChatterBOX</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <style media="screen">
+        @import url('https://fonts.googleapis.com/css?family=Baloo+Thambi');
+        @import url('https://fonts.googleapis.com/css?family=Julius+Sans+One');
+        body {
+            background-color: #333;
+            color: white;
+        }
+
+        .navbar>div {
+            margin: 15px;
+        }
+
+        #brand {
+            font-family: 'Baloo Thambi';
+            font-size: 2.5em;
+            color: white;
+            text-decoration: none;
+        }
+
+        #brand-p {
+            display: inline;
+        }
+
+        #brand:hover {
+            color: #00ffff;
+        }
+
+        #userLoginArea {
+            margin-top: 150px;
+        }
+
+        #usersList,
+        .chat {
+            color: black;
+        }
+
+        .chat {
+            word-wrap: break-word;
+        }
+
+        #messageArea {
+            margin-top: 120px;
+            display: none;
+        }
+
+        #chat, #users {
+            max-height: 350px;
+            overflow: auto;
+        }
+
+        #github-icon {
+            float: right;
+            width: 10px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        #github-icon:hover {
+            color: #0088ff;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <a href="#" id="brand">
+                    <p id="brand-p">Chatter</p>
+                    <p id="brand-p" style="font-family: 'Julius sans one'">BOX</p>
+                </a>
+
+                <a id="github-icon" href="#"><i class="fa fa-github fa-3x" aria-hidden="true"></i></a>
+               
+            </div>
+        </nav>
+
+        <div class="row" id="userLoginArea">
+            <div class="col-md-4">
+                <form id="userLogin">
+                    <div class="form-group">
+                        <label>Enter Username</label>
+                        <input class="form-control" id="username" />
+                        <br/>
+                        <input type="submit" class="btn btn-primary" value="Login" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="messageArea" class="row">
+            <div class="col-md-4" id="usersList">
+                <div class="well">
+                    <h3>Online users</h3>
+                    <ul class="list-group" id="users">
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-8" id="msg-sect">
+                <div class="chat" id="chat"></div>
+
+                <form id="messageForm">
+                    <div class="form-group">
+                        <label>Enter Message</label>
+                        <textarea class="form-control" id="message"></textarea>
+                        <br>
+                        <input type="submit" class="btn btn-primary" value="send">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        $(function() {
+            var socket = io.connect();
+            var $messageForm = $('#messageForm');
+            var $message = $('#message');
+            var $chat = $('#chat');
+            var $messageArea = $('#messageArea');
+            var $userLoginArea = $('#userLoginArea');
+            var $userLogin = $('#userLogin');
+            var $users = $('#users');
+            var $username = $('#username');
+
+            $messageForm.submit(function(e) {
+                e.preventDefault();
+                socket.emit('send message', $message.val());
+                $message.val('');
+            });
+
+            socket.on('new message', function(data) {
+                $chat.append('<div class="well"><strong>' + data.user + ' : </strong> ' + data.msg + '</div>');
+            });
+
+            $userLogin.submit(function(e) {
+                e.preventDefault();
+                socket.emit('new user', $username.val(), function(data) {
+                    if (data) {
+                        $userLoginArea.hide();
+                        $messageArea.show();
+                    }
+                });
+                $username.val('');
+            });
+
+            socket.on('get users', function(data) {
+                var html = '';
+                for (var i = 0; i < data.length; ++i) {
+                    html += '<li class="list-group-item">' + data[i] + '</li>'
+                }
+                $users.html(html);
+            });
+        });
+    </script>
+
+    <script src="https://use.fontawesome.com/2ea21b52bf.js"></script>
+</body>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
