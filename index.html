@@ -7,131 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ChatterBOX</title>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
-
+    <link rel="stylesheet" href="css/style.css">
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-
-    <style media="screen">
-    @import url('https://fonts.googleapis.com/css?family=Baloo+Thambi');
-    @import url('https://fonts.googleapis.com/css?family=Julius+Sans+One');
-    body
-    {
-        color: white;
-        background-color: #333;
-    }
-
-    .navbar > div
-    {
-        margin: 10px;
-    }
-
-    #brand
-    {
-        font-family: 'Baloo Thambi';
-        font-size: 2.5em;
-
-        text-decoration: none;
-
-        color: white;
-    }
-
-    #brand-p
-    {
-        display: inline;
-    }
-
-    #brand:hover
-    {
-        color: #0ff;
-    }
-
-    #userLoginArea
-    {
-        margin-top: 150px;
-    }
-
-    #chatArea
-    {
-        display: none;
-
-        margin-top: 100px;
-    }
-
-    .chat {
-        height: 330px;
-        padding: 15px;
-        margin-bottom: 40px;
-        word-wrap: break-word;
-    }
-
-    #usersList,
-    .chat
-    {
-        color: black;
-    }
-
-    .chat,
-    #users
-    {
-        overflow-x: hidden;
-        overflow-y: auto;
-
-        max-height: 350px;
-    }
-
-    .chat::-webkit-scrollbar,
-    #user::-webkit-scrollbar
-    {
-        width: 10px;
-    }
-
-    .chat::-webkit-scrollbar-thumb,
-    #user::-webkit-scrollbar-thumb
-    {
-        border-radius: 5px;
-        background: rgba(255, 255, 255, .7);
-    }
-
-    #github-icon
-    {
-        float: right;
-
-        width: 10px;
-
-        text-decoration: none;
-
-        color: #fff;
-    }
-
-    #github-icon:hover
-    {
-        color: #08f;
-    }
-
-    </style>
-
 </head>
 
 <body>
 
     <div class="container">
+
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <a href="#" id="brand">
-                    <p id="brand-p">Chatter</p>
-                    <p id="brand-p" style="font-family: 'Julius sans one'">BOX</p>
+                    <span id="brand-p">Chatter</span>
+                    <span id="brand-p" style="font-family: 'Julius sans one'">BOX</span>
                 </a>
-
-                <a id="github-icon" href="#"><i class="fa fa-github fa-3x" aria-hidden="true"></i></a>
+                <div class="github">
+                    <a id="github-icon" href="https://github.com/avinashw50w/ChatterBox" target="_blank">
+                        <i class="fa fa-github fa-3x" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
-
         </nav>
 
         <div class="row" id="userLoginArea">
@@ -147,7 +46,7 @@
             </div>
         </div>
 
-        <div class="row"  id="chatArea" >
+        <div class="row" id="chatArea">
             <div class="col-md-4" id="usersList">
                 <div class="well">
                     <h3>Online users</h3>
@@ -216,16 +115,8 @@
         });
     </script>
 
-<script src="https://use.fontawesome.com/4c7c6c3deb.js"></script>
+    <script src="https://use.fontawesome.com/4c7c6c3deb.js"></script>
 
 </body>
-
-</html>
-
-</html>
-
-</html>
-
-</html>
 
 </html>

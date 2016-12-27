@@ -1,0 +1,117 @@
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+@import url('https://fonts.googleapis.com/css?family=Baloo+Thambi');
+@import url('https://fonts.googleapis.com/css?family=Julius+Sans+One');
+body
+{
+    color: white;
+    background-color: #333;
+}
+
+.navbar .container
+{
+    margin: 10px;
+}
+
+#brand
+{
+    font-family: 'Baloo Thambi';
+    font-size: 2.5em;
+
+    text-decoration: none;
+
+    color: white;
+}
+
+#brand {
+    letter-spacing: 0px;
+    position: relative;
+}
+
+#brand:hover
+{
+    color: #0ff;
+}
+
+.navbar .container .github
+{
+    float: right;
+    width: 30px;
+}
+
+.navbar .container #github-icon
+{
+    color: #fff;
+}
+.navbar .container #github-icon:hover
+{
+    color: #08f;
+}
+
+#userLoginArea
+{
+    margin-top: 150px;
+}
+
+#username {
+    width: 250px;
+    -webkit-transition: width .35s ease-in-out;
+    transition: width .35s ease-in-out;
+}
+
+#username:focus {
+    width: 400px;
+}
+
+#chatArea
+{
+    display: none;
+
+    margin-top: 100px;
+}
+
+.chat
+{
+    height: 330px;
+    margin-bottom: 40px;
+    padding: 15px;
+
+    word-wrap: break-word;
+}
+
+#usersList,
+.chat
+{
+    color: black;
+}
+
+.chat,
+#users
+{
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    max-height: 350px;
+    word-wrap: break-word;
+}
+
+.chat::-webkit-scrollbar,
+#users::-webkit-scrollbar
+{
+    width: 10px;
+}
+
+.chat::-webkit-scrollbar-thumb
+{
+    border-radius: 5px;
+    background: rgba(255, 255, 255, .7);
+}
+
+#users::-webkit-scrollbar-thumb
+{
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .3);
+}
+
+#message {
+    max-width: 750px;
+}
